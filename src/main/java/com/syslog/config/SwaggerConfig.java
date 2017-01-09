@@ -15,13 +15,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * The Class SwaggerConfig.
  * 
  * Swagger Documentation
+ * 
  * @Link {http://localhost:8080/swagger-ui.html}
  * 
  */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-	
+
 	/**
 	 * News api.
 	 *
@@ -30,11 +31,10 @@ public class SwaggerConfig {
 	@Bean
 	public Docket newsApi() {
 		return new Docket(DocumentationType.SWAGGER_2)
-				.apiInfo(apiInfo())
-				.select()
-				.apis(RequestHandlerSelectors.any())
-				.paths(PathSelectors.any())
-				.build();
+			.apiInfo(apiInfo()).select()
+			.apis(RequestHandlerSelectors.any())
+			.paths(PathSelectors.any())
+			.build();
 	}
 
 	/**
@@ -44,9 +44,9 @@ public class SwaggerConfig {
 	 */
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("Spring REST Service for Syslog Manager")
-				.description("Syslog Manager")
-				.version("1.0")
-				.build();
+			.title("Spring REST Service for Syslog Manager")
+			.description("Syslog Manager")
+			.version("1.0")
+			.build();
 	}
 }
