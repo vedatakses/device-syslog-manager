@@ -6,6 +6,8 @@ import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
+import com.syslog.data.Message;
+
 @Configuration
 public class RedisConfiguration {
 
@@ -28,8 +30,8 @@ public class RedisConfiguration {
 	 * @return the redis template
 	 */
 	@Bean
-	public RedisTemplate<String, Object> redisTemplate() {
-		RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
+	public RedisTemplate<String, Message> redisTemplate() {
+		RedisTemplate<String, Message> template = new RedisTemplate<String, Message>();
 		template.setConnectionFactory(jedisConnectionFactory());
 		template.setKeySerializer(new StringRedisSerializer());
 		return template;
