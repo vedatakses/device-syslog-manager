@@ -18,25 +18,26 @@ import com.syslog.repository.MessageRepositoryImpl;
 @EnableScheduling
 @SpringBootApplication
 public class SyslogApplication {
-	
+
+	/** The Constant logger. */
 	private static final Logger log = LoggerFactory.getLogger(SyslogApplication.class);
-	
+
 	@Value("${myqueue}")
 	String queue;
-	
+
 	@Autowired
 	RedisTemplate<String, Message> redisTemplate;
-	
+
 	@Bean
 	MessageRepository repository() {
 		return new MessageRepositoryImpl(redisTemplate);
 	}
-	
+
 	@Bean
 	Queue queue() {
 		return new Queue(queue, false);
 	}
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(SyslogApplication.class, args);
 	}

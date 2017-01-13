@@ -1,6 +1,6 @@
 package com.syslog.repository;
 
-import java.util.Map;
+import java.util.List;
 
 import com.syslog.data.Message;
 
@@ -23,7 +23,7 @@ public interface MessageRepository {
 	 *
 	 * @return the map
 	 */
-	Map<Object, Object> findAllMessages();
+	List<Message> findAllMessages();
 
 	/**
 	 * Delete message.
