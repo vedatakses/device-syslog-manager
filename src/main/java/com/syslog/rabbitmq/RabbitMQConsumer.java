@@ -27,7 +27,7 @@ public class RabbitMQConsumer {
 	 *
 	 * @param message the message
 	 */
-	@RabbitListener(queues="${myqueue}")
+	@RabbitListener(queues="${service.rabbitmq.queue}")
 	public void receiveMessage(Message message) {
 		log.info("Got a new message: " + message);
 		repository.saveMessage(message);

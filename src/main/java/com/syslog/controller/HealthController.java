@@ -13,6 +13,6 @@ public class HealthController {
 
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public String hello() {
-		return "syslog manager is running..";
+		return "Hallo, Welt!";
 	}
 }

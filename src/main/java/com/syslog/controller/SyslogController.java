@@ -19,7 +19,7 @@ import com.syslog.repository.MessageRepository;
 public class SyslogController {
 
 	private static final Logger log = LoggerFactory.getLogger(SyslogController.class);
-	
+
 	@Autowired
 	MessageRepository repository;
 
@@ -29,11 +29,10 @@ public class SyslogController {
 		return repository.findMessage(Long.toString(id));
 	}
 
-	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Message> findAll() {
 		log.info("log - findAll");
-		return (List<Message>) repository.findAllMessages();
+		return repository.findAllMessages();
 	}
 
 }

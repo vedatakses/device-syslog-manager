@@ -22,8 +22,8 @@ public class SyslogApplication {
 	/** The Constant logger. */
 	private static final Logger log = LoggerFactory.getLogger(SyslogApplication.class);
 
-	@Value("${myqueue}")
-	String queue;
+	@Value("${service.rabbitmq.queue}")
+	String syslogQueue;
 
 	@Autowired
 	RedisTemplate<String, Message> redisTemplate;
@@ -35,7 +35,7 @@ public class SyslogApplication {
 
 	@Bean
 	Queue queue() {
-		return new Queue(queue, false);
+		return new Queue(syslogQueue, false);
 	}
 
 	public static void main(String[] args) {
