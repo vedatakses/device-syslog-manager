@@ -26,8 +26,7 @@ dependencies {
 	compile group: 'org.springframework', name: 'spring-context', version: '4.3.5.RELEASE'
 	compile group: 'org.springframework.data', name: 'spring-data-redis', version: '1.7.6.RELEASE'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.3.RELEASE'
-	compile("org.springframework.boot:spring-boot-starter-amqp")
-	
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-eureka', version: '1.2.4.RELEASE'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-amqp', version: '1.4.3.RELEASE'
     testCompile 'junit:junit:4.12'
 }
