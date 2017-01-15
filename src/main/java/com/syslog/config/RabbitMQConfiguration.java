@@ -14,10 +14,10 @@ import com.syslog.rabbitmq.RabbitMQConsumer;
 
 @Configuration
 public class RabbitMQConfiguration {
-	
+
 	@Value("${service.rabbitmq.queue}")
 	private String queueName;
-	
+
 	@Value("${service.rabbitmq.exchange}")
 	private String exchangeName;
 
@@ -26,29 +26,29 @@ public class RabbitMQConfiguration {
 		return new Queue(queueName, false);
 	}
 
-    @Bean
-    TopicExchange exchange() {
-        return new TopicExchange(exchangeName);
-    }
+	@Bean
+	TopicExchange exchange() {
+		return new TopicExchange(exchangeName);
+	}
 
-    @Bean
-    Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with(queueName);
-    }
+	@Bean
+	Binding binding(Queue queue, TopicExchange exchange) {
+		return BindingBuilder.bind(queue).to(exchange).with(queueName);
+	}
 
-    @Bean
-    SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
-            MessageListenerAdapter listenerAdapter) {
-        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
-        container.setConnectionFactory(connectionFactory);
-        container.setQueueNames(queueName);
-        container.setMessageListener(listenerAdapter);
-        return container;
-    }
-    
-    @Bean
-    MessageListenerAdapter listenerAdapter(RabbitMQConsumer consumer) {
-        return new MessageListenerAdapter(consumer, "receiveMessage");
-    }
-    
+	@Bean
+	SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
+			MessageListenerAdapter listenerAdapter) {
+		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
+		container.setConnectionFactory(connectionFactory);
+		container.setQueueNames(queueName);
+		container.setMessageListener(listenerAdapter);
+		return container;
+	}
+
+	@Bean
+	MessageListenerAdapter listenerAdapter(RabbitMQConsumer consumer) {
+		return new MessageListenerAdapter(consumer, "receiveMessage");
+	}
+
 }
