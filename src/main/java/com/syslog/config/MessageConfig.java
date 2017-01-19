@@ -2,6 +2,7 @@ package com.syslog.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import com.syslog.data.Message;
@@ -11,8 +12,9 @@ import com.syslog.repository.MessageRepositoryImpl;
 /**
  * The Class MessageConfig.
  */
+@Configuration
 public class MessageConfig {
-	
+
 	/** The redis template. */
 	@Autowired
 	RedisTemplate<String, Message> redisTemplate;
