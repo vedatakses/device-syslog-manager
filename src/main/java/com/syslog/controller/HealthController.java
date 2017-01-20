@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HealthController {
 
-	@Value("${service.name}")
+	@Value("${spring.application.name}")
 	private String serviceName;
 
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
